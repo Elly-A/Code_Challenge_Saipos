@@ -1,0 +1,8 @@
+<section class="container">
+  <add-todo></add-todo>
+  <mat-list>
+    <mat-list-item *ngFor="let todo of todos">
+      <single-todo [todo]="todo"></single-todo>
+    </mat-list-item>
+  </mat-list>
+</section>

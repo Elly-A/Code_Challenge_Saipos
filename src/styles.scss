@@ -1,1 +1,158 @@
-/* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/theming';
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Available color palettes: https://material.io/design/color/
+$light-background: (
+  50: #fafafa,
+  100: #F5f5f5,
+  200: #efefef,
+  300: #e1e1e1,
+  400: #bfbfbf,
+  500: #a0a0a0,
+  600: #777777,
+  700: #626262,
+  800: #434343,
+  900: #222222,
+  contrast: ()
+);
+
+$todo-list-light-primary: mat-palette($mat-indigo, 400, 200, 600);
+$todo-list-light-accent: mat-palette($mat-pink, A200, A100, A400);
+$todo-list-light-warn: mat-palette($mat-red);
+$todo-list-light-background: mat-palette($light-background, A200, A100, A400);
+
+$todo-list-light-theme: mat-light-theme((
+  color: (
+    primary: $todo-list-light-primary,
+    accent: $todo-list-light-accent,
+    warn: $todo-list-light-warn,
+    background: $todo-list-light-background,
+  )
+));
+
+@include angular-material-theme($todo-list-light-theme);
+
+$dark-primary: (
+  50: #FDF7FF,
+  100: #F7F1FD,
+  200: #EEE8F5,
+  300: #DFD9E5,
+  400: #BBB5C2,
+  500: #9B96A2,
+  600: #736E79,
+  700: #5F5A65,
+  800: #403B45,
+  900: #1F1B24,
+  contrast: ()
+);
+
+$dark-background: (
+  50: #F7F7F7,
+  100: #EEEEEE,
+  200: #E2E2E2,
+  300: #D0D0D0,
+  400: #ABABAB,
+  500: #8A8A8A,
+  600: #636363,
+  700: #505050,
+  800: #323232,
+  900: #121212,
+  contrast: ()
+);
+
+$todo-list-dark-primary: mat-palette($dark-primary);
+$todo-list-dark-accent: mat-palette($mat-pink, A200, A100, A400);
+$todo-list-dark-warn: mat-palette($mat-red);
+$todo-list-dark-background: mat-palette($dark-background);
+
+$todo-list-dark-theme: mat-dark-theme((
+  color: (
+    primary: $todo-list-dark-primary,
+    accent: $todo-list-dark-accent,
+    warn: $todo-list-dark-warn,
+    background: $todo-list-dark-background,
+  )
+));
+
+.mat-app-background {
+  transition: .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#mat-app-dark-background {
+  @include angular-material-color($todo-list-dark-theme);
+  transition: .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+
+html, body { height: 100%; box-sizing: border-box; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+button[mat-button] {
+  padding: 0;
+  min-width: 3rem;
+  min-height: 2.6rem;
+  margin: 0 0.5rem;
+
+  mat-icon {
+    transform: scale(1.2);
+  }
+}
+
+// Boostrap Container
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+  width: 100%;
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container-sm, .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container-md, .container-sm, .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container-lg, .container-md, .container-sm, .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1320px;
+  }
+}

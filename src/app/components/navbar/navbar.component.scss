@@ -1,0 +1,14 @@
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+
+  mat-icon {
+    padding-right: 1rem;
+  }
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}

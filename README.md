@@ -1,27 +1,47 @@
-# TodoList
+# To-Do List - Saipos CODE CHALLENGE
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
+Criar uma To-Do List utilizando Node.js e Angular. Este projeto não precisa de autenticação para ser utilizado e deverá utilizar um banco de dados relacional.
 
-## Development server
+## Sumário do Projeto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* [Visão Geral](#visao-geral)
+* [Front End](#front-end)
+* [Back End](#back-end)
+* [Relational DB](#relational-db)
+* [APIs](#apis)
+  * [MailboxLayer](#mailboxlayer)
+  * [did_you_mean](#did_you_mean)
+  * [cat-facts](#cat-facts)
 
-## Code scaffolding
+## Visão Geral
+A To-Do List deve incluir as seguintes funcionalidades:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* Incluir nova tarefa
+* Listar tarefas pendentes
+* Consultar lista de tarefas já concluídas
+* Gerar tarefas com [cat-facts](#cat-facts)
 
-## Build
+Para incluir nova tarefa, será necessário informar a descrição, o nome do responsável pela mesma e o e-mail.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+E-mails devem ser validados utilizando [MailboxLayer](#mailboxlayer) - validar registros MX e formato.
 
-## Running unit tests
+Se o e-mail for inválido, utilizar [did_you_mean](#did_you_mean) para sugerir um endereço válido.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Tarefas concluídas irão para a sessão de tarefas realizadas.
 
-## Running end-to-end tests
+Tarefas podem ser colocadas como pendentes DUAS VEZES, porém apenas com a senha de autorização "TrabalheNaSaipos".
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Front End
+Angular v~11.2.7
 
-## Further help
+## Back End
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Relational DB
+
+## APIs
+
+### MailboxLayer
+
+### did_you_mean
+
+### cat-facts

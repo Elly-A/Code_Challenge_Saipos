@@ -1,0 +1,6 @@
+<section>
+  <mat-icon>dark_mode</mat-icon>
+  <mat-slide-toggle
+    [matTooltip]="isDarkMode ? 'Clique aqui para desabilitar o modo noturno.' : 'Clique aqui para habilitar o modo noturno.'"
+    id="mat-slide" (change)="onChange($event)"></mat-slide-toggle>
+</section>
