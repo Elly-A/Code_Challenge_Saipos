@@ -1,24 +1,20 @@
 const Joi = require('joi');
 
 const schema = Joi.object({
-  id: Joi.number()
-    .required(),
+  id: Joi.number(),
 
   createdByName: Joi.string()
-    .alphanum()
-    .min(3)
+    .min(2)
     .max(50)
     .required(),
 
   createdByEmail: Joi.string()
-    .alphanum()
     .min(5)
     .max(80)
     .required(),
 
   content: Joi.string()
-    .alphanum()
-    .max(200),
+    .max(500),
 
   timesCompleted: Joi.number()
     .max(2)
@@ -36,6 +32,10 @@ const schema = Joi.object({
     .required(),
 });
 
+/**
+ * Retorna um objeto de validação com base no schema de uma Todo
+ * @returns Joi.ValidationResult
+ */
 exports.validateTodo = function (todo) {
   return schema.validate(todo);
 }

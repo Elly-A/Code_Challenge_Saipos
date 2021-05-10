@@ -4,7 +4,7 @@ import { from, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 export class CustomValidator {
-  private static mailboxAPIKey = 'f20f7ae318c34b92ee6a685fac758feb';
+  private static mailboxAPIKey = '42bc40bb8180a89b8d799300c42ad141';
   private static mailboxAPIUrl = 'https://apilayer.net/api/check';
   private static http = new HttpClient(new HttpXhrBackend({ build: () => new XMLHttpRequest() }));
 

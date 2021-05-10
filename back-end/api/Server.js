@@ -1,4 +1,5 @@
 const express = require('express');
+const helmet = require('helmet');
 
 const { getRoutes, todoFrontEndPath } = require('./routes/routes');
 
@@ -16,6 +17,7 @@ class App {
 
     this.express.use(express.json())
     this.express.use(express.static(todoFrontEndPath));
+    this.express.use(helmet());
     this.express.use('/', router);
   }
 }

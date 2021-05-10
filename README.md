@@ -5,12 +5,7 @@ Criar uma To-Do List utilizando Node.js e Angular. Este projeto não precisa de 
 ## Sumário do Projeto
 
 * [Visão Geral](#visao-geral)
-* [Front End](#front-end)
-* [Back End](#back-end)
-* [Relational DB](#relational-db)
-* [APIs](#apis)
-  * [MailboxLayer](#mailboxlayer)
-  * [cat-facts](#cat-facts)
+* [Como Utilizar](#como-utilizar)
 
 ## Visão Geral
 A To-Do List deve incluir as seguintes funcionalidades:
@@ -18,27 +13,18 @@ A To-Do List deve incluir as seguintes funcionalidades:
 * Incluir nova tarefa
 * Listar tarefas pendentes
 * Consultar lista de tarefas já concluídas
-* Gerar tarefas com [cat-facts](#cat-facts)
+* Gerar tarefas com cat-facts
 
 Para incluir nova tarefa, será necessário informar a descrição, o nome do responsável pela mesma e o e-mail.
 
-E-mails devem ser validados utilizando [MailboxLayer](#mailboxlayer) - validar registros MX e formato.
+E-mails devem ser validados utilizando MailboxLayer - validar registros MX e formato.
 
-Se o e-mail for inválido, utilizar did_you_mean (atributo da resposta de [MailboxLayer](#mailboxlayer)) para sugerir um endereço válido.
+Se o e-mail for inválido, utilizar did_you_mean (atributo da resposta de MailboxLayer) para sugerir um endereço válido.
 
 Tarefas concluídas irão para a sessão de tarefas realizadas.
 
 Tarefas podem ser colocadas como pendentes DUAS VEZES, porém apenas com a senha de autorização "TrabalheNaSaipos".
 
-## Front End
-Angular v~11.2.7
-
-## Back End
-
-## Relational DB
-
-## APIs
-
-### MailboxLayer
-
-### cat-facts
+## Como Utilizar
+Acesse a pasta app e rode o arquivo index.js em node.
+Se estiver pelo prompt, utilize o comando `npm run start`.

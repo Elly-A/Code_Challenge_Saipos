@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { TodoService } from './services/todo.service';
 
 @Component({
@@ -6,12 +7,23 @@ import { TodoService } from './services/todo.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  title = 'todo-list';
+export class AppComponent implements OnInit, OnDestroy {
+  subscriptions: Subscription[] = [];
 
   constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
-    this.todoService.getAll();
+    const todoSubs =
+      this.todoService.getAll()
+        .subscribe();
+
+    this.subscriptions.push(todoSubs);
   }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(subscription => {
+      subscription.unsubscribe();
+    });
+  }
+
 }

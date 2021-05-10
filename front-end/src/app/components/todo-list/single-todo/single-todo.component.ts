@@ -2,6 +2,7 @@ import { NgRedux } from '@angular-redux/store';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 import { Todo } from 'src/app/interfaces/todo.interface';
 import { TodoService } from 'src/app/services/todo.service';
 import { IAppState } from 'src/app/stores/store';
@@ -18,6 +19,8 @@ import { ValidateSupervisorPasswordComponent } from '../dialog/validate-supervis
   ]
 })
 export class SingleTodoComponent implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   @Input('todo') originalTodo: Todo;
   todo: Todo;
 
@@ -43,7 +46,7 @@ export class SingleTodoComponent implements OnInit {
 
     if (!this.todo.isCompleted) {
       this.toggleTodo();
-      this.service.update(this.todo);
+      this.updateTodo();
     }
   }
 
@@ -51,7 +54,7 @@ export class SingleTodoComponent implements OnInit {
     if (this.todo.timesEdited > 1) {
 
     } else {
-      this.openValidateSupervisorPasswordDialog(
+      const pwCheckSubscription = this.openValidateSupervisorPasswordDialog(
         { option: 'editável', times: this.todo.timesEdited }
       ).afterClosed()
         .subscribe((isValid: boolean) => {
@@ -60,14 +63,15 @@ export class SingleTodoComponent implements OnInit {
             this.editMode = true;
           }
         });
+
+      this.subscriptions.push(pwCheckSubscription);
     }
   }
 
   returnTodo(): void {
     if (this.todo.timesCompleted > 2) {
-      // this.showLimitOfTimesCompletedWarning();
+
     } else {
-      console.log(this.todo.timesCompleted);
       this.openValidateSupervisorPasswordDialog(
         { option: 'pendente', times: this.todo.timesCompleted }
       ).afterClosed()
@@ -108,7 +112,10 @@ export class SingleTodoComponent implements OnInit {
   }
 
   updateTodo(): void {
-    this.service.update(this.todo);
+    const updateSubscription = this.service.update(this.todo)
+      .subscribe();
+
+    this.subscriptions.push(updateSubscription);
   }
 
   private toggleTodo(): void {
@@ -140,5 +147,11 @@ export class SingleTodoComponent implements OnInit {
 
   private incrementTimesEdited(): void {
     this.todo.timesEdited++;
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(subscription => {
+      subscription.unsubscribe();
+    })
   }
 }

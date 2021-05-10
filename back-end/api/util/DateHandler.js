@@ -3,9 +3,9 @@ const DateInvalidException = require('./exceptions/DateInvalidException');
 
 class DateHandler {
   /**
-   * @param date date object
-   * @returns YYYYMMDD if param is a valid date
-   * @throws DateDoesNotMatchException if invalid date
+   * @param date objeto de data
+   * @returns YYYYMMDD se o paramêtro é uma data válida
+   * @throws DateDoesNotMatchException se datá inválida
    */
   static getFullDate(date) {
     if (!(date instanceof Date)) {

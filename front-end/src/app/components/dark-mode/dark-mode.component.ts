@@ -1,4 +1,4 @@
-import { AfterContentChecked, AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
@@ -22,8 +22,7 @@ export class DarkModeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    document.querySelector('[main-id]')
-      .id === 'mat-app-dark-background' ?
+    this.isDarkMode ?
       document.getElementById('mat-slide-input').click() :
       '';
 

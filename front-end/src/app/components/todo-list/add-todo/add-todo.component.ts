@@ -1,7 +1,8 @@
-import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { TodoService } from 'src/app/services/todo.service';
+import { inOutAnimation } from 'src/app/util/animations/inOutAnimation';
 import { CustomValidator } from 'src/app/util/validators/Validator';
 
 @Component({
@@ -9,30 +10,12 @@ import { CustomValidator } from 'src/app/util/validators/Validator';
   templateUrl: './add-todo.component.html',
   styleUrls: ['./add-todo.component.scss'],
   animations: [
-    trigger(
-      'inOutAnimation',
-      [
-        transition(
-          ':enter',
-          [
-            style({ opacity: 0, height: '0' }),
-            animate('.5s cubic-bezier(0.075, 0.82, 0.165, 1)',
-              style({ opacity: 1, height: '*' }))
-          ]
-        ),
-        transition(
-          ':leave',
-          [
-            style({ opacity: 1, height: '*' }),
-            animate('.5s cubic-bezier(0.075, 0.82, 0.165, 1)',
-              style({ opacity: 0, height: '0' }))
-          ]
-        ),
-      ]
-    ),
+    inOutAnimation
   ]
 })
-export class AddTodoComponent implements OnInit {
+export class AddTodoComponent implements OnInit, OnDestroy {
+  private subscriptions: Subscription[] = [];
+
   openFormDescription = 'Adicionar nova tarefa';
   closeFormDescription = 'Cancelar';
   formOpen = false;
@@ -44,7 +27,9 @@ export class AddTodoComponent implements OnInit {
     createdByName: ['', [
       Validators.required
     ]],
-    createdByEmail: ['', [Validators.required], [CustomValidator.emailValidator]],
+    createdByEmail: ['', [Validators.required],
+      [CustomValidator.emailValidator]
+    ],
   });
 
   constructor(
@@ -56,7 +41,7 @@ export class AddTodoComponent implements OnInit {
   }
 
   addTodo(): void {
-    this.service.add({
+    const addSubscription = this.service.add({
       content: this.form.get('content').value,
       createdByEmail: this.form.get('createdByEmail').value,
       createdByName: this.form.get('createdByName').value,
@@ -64,7 +49,9 @@ export class AddTodoComponent implements OnInit {
       timesCompleted: 0,
       timesEdited: 0,
       isPinned: false
-    });
+    }).subscribe();
+
+    this.subscriptions.push(addSubscription);
 
     this.form.reset();
     this.closeForm();
@@ -80,5 +67,15 @@ export class AddTodoComponent implements OnInit {
 
   correctCreatedByEmailField(newField: string): void {
     this.form.controls.createdByEmail.setValue(newField);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(subscription => {
+      subscription.unsubscribe();
+    });
+  }
+
+  log(msg) {
+    console.log(msg)
   }
 }

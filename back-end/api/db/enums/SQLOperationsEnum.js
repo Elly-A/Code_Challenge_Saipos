@@ -18,7 +18,9 @@ const SQLOperationsEnum = {
   DEFAULT: " DEFAULT ",
   CHARSET: " CHARSET ",
   ENGINE: " ENGINE ",
-  AS: " AS "
+  AS: " AS ",
+  UPDATE: " UPDATE ",
+  SET: " SET "
 }
 
 module.exports = SQLOperationsEnum;

@@ -71,3 +71,33 @@
 }
 {"_events":{},"_eventsCount":0,"config":{"host":"127.0.0.1","port":"3306","user":"dani","password":"1030774","database":"todos","connectTimeout":10000,"insecureAuth":false,"supportBigNumbers":false,"bigNumberStrings":false,"dateStrings":false,"trace":true,"stringifyObjects":false,"timezone":"local","flags":"","ssl":false,"localInfile":true,"multipleStatements":false,"typeCast":true,"maxPacketSize":0,"charsetNumber":33,"clientFlags":455631},"_protocol":{"_events":{},"_eventsCount":0,"readable":true,"writable":true,"_config":{"host":"127.0.0.1","port":"3306","user":"dani","password":"1030774","database":"todos","connectTimeout":10000,"insecureAuth":false,"supportBigNumbers":false,"bigNumberStrings":false,"dateStrings":false,"trace":true,"stringifyObjects":false,"timezone":"local","flags":"","ssl":false,"localInfile":true,"multipleStatements":false,"typeCast":true,"maxPacketSize":0,"charsetNumber":33,"clientFlags":455631},"_connection":"[Circular]","_callback":null,"_fatalError":null,"_quitSequence":null,"_handshake":false,"_handshaked":false,"_ended":false,"_destroyed":false,"_queue":[],"_handshakeInitializationPacket":null,"_parser":{"_supportBigNumbers":false,"_buffer":{"type":"Buffer","data":[]},"_nextBuffers":{"bufs":[],"size":0},"_longPacketBuffers":{"bufs":[],"size":0},"_offset":0,"_packetEnd":null,"_packetHeader":null,"_packetOffset":null,"_nextPacketNumber":0,"_encoding":"utf-8","_paused":false}},"_connectCalled":false,"state":"disconnected","threadId":null,"level":"info","service":"user-service"}
 {"_events":{},"_eventsCount":0,"config":{"host":"127.0.0.1","port":"3306","user":"dani","password":"1030774","database":"todos","connectTimeout":10000,"insecureAuth":false,"supportBigNumbers":false,"bigNumberStrings":false,"dateStrings":false,"trace":true,"stringifyObjects":false,"timezone":"local","flags":"","ssl":false,"localInfile":true,"multipleStatements":false,"typeCast":true,"maxPacketSize":0,"charsetNumber":33,"clientFlags":455631},"_protocol":{"_events":{},"_eventsCount":0,"readable":true,"writable":true,"_config":{"host":"127.0.0.1","port":"3306","user":"dani","password":"1030774","database":"todos","connectTimeout":10000,"insecureAuth":false,"supportBigNumbers":false,"bigNumberStrings":false,"dateStrings":false,"trace":true,"stringifyObjects":false,"timezone":"local","flags":"","ssl":false,"localInfile":true,"multipleStatements":false,"typeCast":true,"maxPacketSize":0,"charsetNumber":33,"clientFlags":455631},"_connection":"[Circular]","_callback":null,"_fatalError":null,"_quitSequence":null,"_handshake":false,"_handshaked":false,"_ended":false,"_destroyed":false,"_queue":[],"_handshakeInitializationPacket":null,"_parser":{"_supportBigNumbers":false,"_buffer":{"type":"Buffer","data":[]},"_nextBuffers":{"bufs":[],"size":0},"_longPacketBuffers":{"bufs":[],"size":0},"_offset":0,"_packetEnd":null,"_packetHeader":null,"_packetOffset":null,"_nextPacketNumber":0,"_encoding":"utf-8","_paused":false}},"_connectCalled":false,"state":"disconnected","threadId":null,"level":"info","service":"user-service"}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Running in port 3000..."}
+{"level":"info","message":"Acesse o endereço localhost:3000 para visualizar..."}

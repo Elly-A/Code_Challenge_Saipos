@@ -16,7 +16,13 @@ export class GenerateTodosComponent implements OnInit {
   }
 
   getThreeRandom(): void {
-    this.service.getThreeRandomTodos();
+    this.service.getThreeRandomTodos()
+      .subscribe(todos => {
+        todos.forEach(todo => {
+          this.service.add(todo)
+            .toPromise();
+        })
+      });
   }
 
 }
