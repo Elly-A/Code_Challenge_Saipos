@@ -8,7 +8,9 @@ const SQLDataTypesEnum = {
   NULL: "NULL",
   AUTO_INCREMENT: "AUTO_INCREMENT",
   CHAR: "CHAR",
-  BIGINT: "BIGINT"
+  BIGINT: "BIGINT",
+  BOOLEAN: 'BOOLEAN',
+  NOT_NULL: 'NOT NULL'
 };
 
-exports.SQLDataTypesEnum = SQLDataTypesEnum;
+module.exports = SQLDataTypesEnum;

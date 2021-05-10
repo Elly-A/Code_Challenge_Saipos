@@ -13,46 +13,32 @@ import { actions } from '../stores/todo-list/todo-list.action';
   providedIn: 'root'
 })
 export class TodoService implements HttpInterfaceWithRedux<Todo> {
+  private url = 'http://localhost:3000/todos/';
 
   constructor(
     private redux: NgRedux<IAppState>,
     private http: HttpClient) { }
 
   getAll(): void {
-    const array: Todo[] = [
-      {
-        id: '1',
-        createdByName: 'Danielle A.',
-        createdByEmail: 'dani@saipos.com',
-        content: 'This is a new todo',
-        isPinned: false,
-        isCompleted: false,
-        timesEdited: 0,
-        timesCompleted: 0
-      },
-      {
-        id: '2',
-        createdByName: 'Priscila',
-        createdByEmail: 'priscila@saipos.com',
-        content: 'Olha esse todo!!',
-        isCompleted: true,
-        isPinned: false,
-        timesEdited: 0,
-        timesCompleted: 1
-      }
-    ];
-    this.redux.dispatch({
-      type: actions.LOAD_TODOS, body: array
-    });
+    this.http.get(this.url)
+      .subscribe(res => {
+        const todos = res[0];
+        this.redux.dispatch({
+          type: actions.LOAD_TODOS, body: todos
+        });
+      })
   }
   get(id: string): void {
     throw new Error('Method not implemented.');
   }
   add(t: Todo): void {
-    this.redux.dispatch({
-      type: actions.ADD_TODO,
-      body: t
-    });
+    this.http.post(this.url + 'add', t)
+      .subscribe(_ => {
+        this.redux.dispatch({
+          type: actions.ADD_TODO,
+          body: t
+        });
+      })
   }
   update(t: Todo): void {
     this.redux.dispatch({

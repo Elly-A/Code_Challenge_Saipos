@@ -1,32 +1,23 @@
 const express = require('express');
-const Connection = require('./db/Connection');
 
-const connection = new Connection(
-  Connection.createConnectionWith('todos')
-);
-
-connection.createDatabase('todos');
+const { getRoutes, todoFrontEndPath } = require('./routes/routes');
 
 class App {
   express;
 
   constructor() {
-    this.express = express;
+    this.express = express();
     this.mountRoutes();
   }
 
   mountRoutes() {
     const router = express.Router();
+    getRoutes(router);
 
-    router.get('/', (req, res) => {
-
-      res.json({
-        message: 'Hello World!'
-      });
-
-    });
+    this.express.use(express.json())
+    this.express.use(express.static(todoFrontEndPath));
     this.express.use('/', router);
   }
 }
 
-exports.app = new App().express;
+module.exports = new App().express;

@@ -1,63 +1,27 @@
-const mysql = require('mysql');
-const SQLOperationsEnum = require('./enums/SQLOperationsEnum');
+const mysql = require('mysql2/promise');
 
-const _ = SQLOperationsEnum;
+process.env.HOST = '127.0.0.1';
+process.env.SQLPORT = 3306;
+process.env.MYSQLUSER = 'dani';
+process.env.MYSQLPW = '1030774';
 
 class Connection {
-
-  connection;
-
-  constructor(connection) {
-    this.connection = connection;
-  }
-
-  connect() {
-    this.connection.connect();
-  }
-
-  query(sqlString, callback) {
-    this.connection.query(sqlString, callback);
-  }
-
-  createDatabase(name) {
-    this.connect();
-
-    this.query(
-      `${_.CREATE} ${_.DATABASE} ${name};`,
-      (error, result, fields) => {
-        if (error) {
-          throw new Error(error);
-        }
-
-        console.log(result);
-        console.log(fields);
-
-        this.end();
-      }
-    )
-  }
-
-  end() {
-    this.connection.end();
-  }
-
-  /**
-   * @param database database name to be used
-   * @returns a connection object for usage with DB
-   */
-  static createConnectionWith(databaseName) {
+  static async getConnection(databaseName) {
     const host = process.env.HOST;
     const user = process.env.MYSQLUSER;
+    const port = process.env.SQLPORT;
     const password = process.env.MYSQLPW;
 
-    return mysql.createConnection({
+    const connection = await mysql.createConnection({
       host,
       user,
       password,
+      port,
       database: databaseName
     });
-  }
 
+    return connection;
+  }
 }
 
-exports.Connection = Connection;
+module.exports = Connection;

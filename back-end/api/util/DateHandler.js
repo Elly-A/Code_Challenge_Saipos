@@ -21,4 +21,4 @@ class DateHandler {
   }
 }
 
-exports.DateHandler = DateHandler;
+module.exports = DateHandler;

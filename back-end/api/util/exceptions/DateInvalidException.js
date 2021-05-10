@@ -5,4 +5,4 @@ class DateInvalidException extends Error {
   }
 }
 
-exports.DateInvalidException = DateInvalidException;
+module.exports = DateInvalidException;

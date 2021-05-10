@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "runserver:dev": "nodemon index"
+    "server:dev": "nodemon index"
   },
   "dependencies": {
     "express": "^4.17.1",
+    "joi": "^17.4.0",
     "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
     "winston": "^3.3.3"
   },
   "author": "",
