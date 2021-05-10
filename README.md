@@ -26,5 +26,4 @@ Tarefas concluídas irão para a sessão de tarefas realizadas.
 Tarefas podem ser colocadas como pendentes DUAS VEZES, porém apenas com a senha de autorização "TrabalheNaSaipos".
 
 ## Como Utilizar
-Acesse a pasta app e rode o arquivo index.js em node.
-Se estiver pelo prompt, utilize o comando `npm run start`.
+Acesse a pasta no terminal que prefira e utilize o comando `npm run start`.
