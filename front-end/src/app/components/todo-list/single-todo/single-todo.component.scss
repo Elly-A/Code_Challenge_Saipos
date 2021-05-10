@@ -1,0 +1,71 @@
+.single-todo {
+  position: relative;
+}
+
+mat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  * {
+    transition: .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  .todo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .todo-content,
+  .todo-actions {
+    display: flex;
+  }
+
+  .todo-content {
+    width: 100%;
+  }
+
+  .todo-actions {
+    margin-bottom: -1rem;
+  }
+
+}
+.author {
+  span {
+    color: #b2a0cc;
+  }
+}
+
+.edit-mode {
+  transition: .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  mat-card {
+    background-color: #737373 !important;
+  }
+
+  mat-form-field {
+    width: 90%;
+  }
+}
+
+.todo-complete {
+  text-decoration: line-through;
+}
+
+.hidden {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  transition: .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.pin-button.active {
+  background-color: #626262 !important;
+}
+
+.pinned {
+  transform: rotate(45deg);
+  margin-right: .2rem;
+}

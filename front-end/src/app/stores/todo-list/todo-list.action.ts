@@ -1,0 +1,8 @@
+
+export enum actions {
+  ADD_TODO = 'ADD TODO',
+  UPDATE_TODO = 'UPDATE TODO',
+  LOAD_TODOS = 'LOAD TODOS',
+  TOGGLE_TODO = 'TOGGLE TODO',
+  MARK_TODO_AS_DONE = 'MARK TODO AS DONE'
+};

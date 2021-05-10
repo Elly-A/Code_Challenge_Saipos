@@ -1,0 +1,47 @@
+<section @inOutAnimation class="add-todo-buttons">
+  <generate-todos></generate-todos>
+  <button *ngIf="!formOpen" (click)="openForm()" [matTooltip]="openFormDescription"
+    [attr.aria-label]="'Clique para ' + openFormDescription.toLowerCase()" mat-button>
+    <mat-icon>add</mat-icon>
+  </button>
+  <button *ngIf="formOpen" (click)="closeForm()" [matTooltip]="closeFormDescription"
+    [attr.aria-label]="'Clique para ' + closeFormDescription.toLowerCase()" mat-button>
+    <mat-icon>close</mat-icon>
+  </button>
+</section>
+
+<section @inOutAnimation class="add-todo-form" *ngIf="formOpen">
+  <mat-card>
+    <form [formGroup]="form" (ngSubmit)="addTodo()">
+      <mat-form-field>
+        <mat-label>Conteúdo da tarefa</mat-label>
+        <input id="todo-content" matInput formControlName="content">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Responsável</mat-label>
+        <input id="name" matInput formControlName="createdByName">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>E-mail do responsável</mat-label>
+        <input type=" email" id="email" matInput formControlName="createdByEmail">
+      </mat-form-field>
+      <mat-error *ngIf="form.controls.createdByEmail.errors as errors" class="did-you-mean">
+        <small *ngIf="errors.isInvalid">
+          <span *ngIf="errors.apiResponse.did_you_mean">
+            Você quis dizer: <a (click)="correctCreatedByEmailField(errors.apiResponse.did_you_mean)" role="button"
+              class="did-you-mean-a">{{
+              errors.apiResponse.did_you_mean }}</a>?
+          </span>
+          <span *ngIf="!errors.apiResponse.did_you_mean">
+            Você quis dizer: <a
+              (click)="correctCreatedByEmailField(errors.apiResponse.user + '@' + (errors.apiResponse.domain || 'mail') + '.com')"
+              role="button" class="did-you-mean-a">
+              {{ errors.apiResponse.user }}@{{ errors.apiResponse.domain || 'mail' }}.com
+            </a>
+          </span>
+        </small>
+      </mat-error>
+      <button color="primary" mat-button type="submit" [disabled]="!form.valid">Adicionar</button>
+    </form>
+  </mat-card>
+</section>

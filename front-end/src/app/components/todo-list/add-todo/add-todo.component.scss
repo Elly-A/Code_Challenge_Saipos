@@ -1,0 +1,44 @@
+.add-todo-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-todo-form {
+  mat-card {
+    margin: 0 1rem;
+
+    form {
+      width: 100%;
+
+      mat-form-field {
+        width: inherit;
+      }
+    }
+  }
+}
+
+.did-you-mean {
+  margin-top: -1rem;
+  margin-bottom: .5rem;
+  position: relative;
+  z-index: 1;
+
+  .did-you-mean-a {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+form {
+  button {
+    margin: 0;
+  }
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}

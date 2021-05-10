@@ -1,0 +1,40 @@
+<section [ngClass]="{ 'edit-mode' : editMode }" class="single-todo">
+  <mat-card>
+    <section class="todo">
+      <section class="todo-content">
+        <mat-radio-button @inOutAnimation *ngIf="todoIsAvailable()" matTooltip="Marcar tarefa como completa"
+          (click)="completeTodo()">
+        </mat-radio-button>
+        <p *ngIf="!editMode" [ngClass]="{ 'todo-complete' : todo.isCompleted }">{{ todo.content }}</p>
+        <mat-form-field *ngIf="editMode">
+          <input (change)="updateCurrentContent($event.target.value)" matInput [value]="todo.content">
+        </mat-form-field>
+      </section>
+      <section class="todo-actions">
+        <button (click)="saveChanges()" matTooltip="Salvar tarefa" *ngIf="editMode" mat-button>
+          <mat-icon>done</mat-icon>
+        </button>
+        <button (click)="discardChanges()" matTooltip="Cancelar atualização" *ngIf="editMode" mat-button>
+          <mat-icon>clear</mat-icon>
+        </button>
+        <div [matTooltip]="!(todo.timesEdited > 1) ? 'Editar tarefa' : 'Você já atingiu o limite de alterações'">
+          <button [disabled]="todo.timesEdited > 1" (click)="enableEditMode()" *ngIf="todoIsAvailable()" mat-button>
+            <mat-icon>create</mat-icon>
+          </button>
+        </div>
+        <button [ngClass]="{ 'active' : todo.isPinned }" class="pin-button" (click)="pinTodo()"
+          matTooltip="Fixar tarefa" *ngIf="todoIsAvailable()" mat-button>
+          <mat-icon [ngClass]="{ 'pinned' : todo.isPinned }">push_pin</mat-icon>
+        </button>
+        <div
+          [matTooltip]="!(todo.timesCompleted > 2) ? 'Voltar tarefa para pendente (precisa de autorização)' : 'Você já atingiu o limite desta operação'">
+          <button (click)="returnTodo()" *ngIf="todo.isCompleted" mat-button [disabled]="(todo.timesCompleted > 2)">
+            <mat-icon>supervisor_account</mat-icon>
+          </button>
+        </div>
+      </section>
+    </section>
+    <section class="author">
+      <small>{{ todo.createdByName }} @<span>{{ todo.createdByEmail }}</span></small>
+    </section>
+  </mat-card>

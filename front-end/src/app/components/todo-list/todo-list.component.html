@@ -1,0 +1,21 @@
+<section class="container">
+  <section class="todo-list-actions">
+    <add-todo></add-todo>
+  </section>
+  <section class="pending-todos">
+    <h2 *ngIf="($pendingTodos | async).length > 0">Tarefas pendentes</h2>
+    <mat-list>
+      <mat-list-item *ngFor="let todo of $pendingTodos | async">
+        <single-todo @inOutAnimationTodos [todo]="todo"></single-todo>
+      </mat-list-item>
+    </mat-list>
+  </section>
+  <section class="complete-todos">
+    <h2 *ngIf="($completedTodos | async).length > 0">Tarefas concluídas</h2>
+    <mat-list>
+      <mat-list-item *ngFor="let todo of $completedTodos | async">
+        <single-todo @inOutAnimationTodos [todo]="todo"></single-todo>
+      </mat-list-item>
+    </mat-list>
+  </section>
+</section>
